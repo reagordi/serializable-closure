@@ -1,4 +1,13 @@
 <?php
+/**
+ * Reagordi Component
+ *
+ * @link https://reagordi.com/
+ * @copyright Copyright (c) 2023 Sergej Rufov
+ * @license https://dev.reagordi.com/license
+ */
+
+declare(strict_types=1);
 
 namespace Reagordi\Component\SerializableClosure\Signers;
 
