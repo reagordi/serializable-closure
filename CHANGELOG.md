@@ -1,4 +1,4 @@
-# _____ Change Log
+# Reagordi Serializable Closure Change Log
 
 ## 1.0.0
 

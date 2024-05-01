@@ -2,24 +2,22 @@
     <a href="https://github.com/reagordi" target="_blank">
         <img src="https://raw.githubusercontent.com/reagordi/docs/main/images/logo.png" alt="Reagordi" height="100px">
     </a>
-    <h1 align="center">Reagordi Package template</h1>
+    <h1 align="center">Reagordi Serializable Closure</h1>
     <br>
 </p>
 
+[![Latest Stable Version](https://poser.pugx.org/reagordi/serializable-closure/v/stable.png)](https://packagist.org/packages/reagordi/serializable-closure)
+[![Total Downloads](https://poser.pugx.org/reagordi/serializable-closure/downloads.png)](https://packagist.org/packages/reagordi/serializable-closure)
+[![Build status](https://github.com/reagordi/serializable-closure/workflows/build/badge.svg)](https://github.com/reagordi/serializable-closure/actions?query=workflow%3Abuild)
+[![Code Coverage](https://codecov.io/gh/reagordi/serializable-closure/branch/master/graph/badge.svg)](https://codecov.io/gh/reagordi/serializable-closure)
 
+[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Freagordi%2Fserializable-closure%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/reagordi/serializable-closure/main)
 
-[![Latest Stable Version](https://poser.pugx.org/reagordi/package-template/v/stable.png)](https://packagist.org/packages/reagordi/package-template)
-[![Total Downloads](https://poser.pugx.org/reagordi/package-template/downloads.png)](https://packagist.org/packages/reagordi/package-template)
-[![Build status](https://github.com/reagordi/package-template/workflows/build/badge.svg)](https://github.com/reagordi/package-template/actions?query=workflow%3Abuild)
-[![Code Coverage](https://codecov.io/gh/reagordi/package-template/branch/master/graph/badge.svg)](https://codecov.io/gh/reagordi/package-template)
+[![static analysis](https://github.com/reagordi/serializable-closure/workflows/static%20analysis/badge.svg)](https://github.com/reagordi/serializable-closure/actions?query=workflow%3A%22static+analysis%22)
+[![type-coverage](https://shepherd.dev/github/reagordi/serializable-closure/coverage.svg)](https://shepherd.dev/github/reagordi/serializable-closure)
+[![psalm-level](https://shepherd.dev/github/reagordi/serializable-closure/level.svg)](https://shepherd.dev/github/reagordi/serializable-closure)
 
-[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Freagordi%2Fpackage-template%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/reagordi/package-template/main)
-
-[![static analysis](https://github.com/reagordi/package-template/workflows/static%20analysis/badge.svg)](https://github.com/reagordi/package-template/actions?query=workflow%3A%22static+analysis%22)
-[![type-coverage](https://shepherd.dev/github/reagordi/package-template/coverage.svg)](https://shepherd.dev/github/reagordi/package-template)
-[![psalm-level](https://shepherd.dev/github/reagordi/package-template/level.svg)](https://shepherd.dev/github/reagordi/package-template)
-
-The package ...
+Reagordi Serializable Closure provides an easy and secure way to serialize closures in PHP.
 
 ## Requirements
 
@@ -30,10 +28,34 @@ The package ...
 The package could be installed with composer:
 
 ```shell
-composer require reagordi/package-template
+composer require reagordi/serializable-closure
 ```
 
 ## General usage
+
+You may serialize a closure this way:
+
+```php
+use Reagordi\Component\SerializableClosure\SerializableClosure;
+
+$closure = fn () => 'james';
+
+// Recommended
+SerializableClosure::setSecretKey('secret');
+
+$serialized = serialize(new SerializableClosure($closure));
+$closure = unserialize($serialized)->getClosure();
+
+echo $closure(); // james;
+```
+
+### Caveats
+
+* Anonymous classes cannot be created within closures.
+* Attributes cannot be used within closures.
+* Serializing closures on REPL environments like Laravel Tinker is not supported.
+* Serializing closures that reference objects with readonly properties is not supported.
+
 
 ## Testing
 
@@ -78,7 +100,7 @@ Use [ComposerRequireChecker](https://github.com/maglnet/ComposerRequireChecker) 
 
 ## License
 
-The Reagordi Package template is free software. It is released under the terms of the BSD License.
+The Reagordi Serializable Closure is free software. It is released under the terms of the BSD License.
 Please see [`LICENSE`](./LICENSE.md) for more information.
 
 Maintained by [Reagordi Group](https://reagordi.com/).

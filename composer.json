@@ -1,18 +1,20 @@
 {
-    "name": "reagordi/package-template",
+    "name": "reagordi/serializable-closure",
     "type": "library",
-    "description": "package-template",
+    "description": "Reagordi Serializable Closure provides an easy and secure way to serialize closures in PHP.",
     "keywords": [
-        "package-template"
+        "component",
+        "framework",
+        "reagordi"
     ],
     "homepage": "https://reagordi.com/",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/reagordi/package-template/issues?state=open",
+        "issues": "https://github.com/reagordi/serializable-closure/issues?state=open",
         "forum": "https://forum.reagordi.com/",
         "wiki": "https://wiki.reagordi.com/",
         "chat": "https://t.me/reagordi_community",
-        "source": "https://github.com/reagordi/package-template"
+        "source": "https://github.com/reagordi/serializable-closure"
     },
     "funding": [
         {
@@ -24,10 +26,12 @@
             "url": "https://github.com/sponsors/reagordi"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": "^8.2"
+        "php": "^8.2",
+        "reagordi/contracts-serializable-closure": "^1.0",
+        "reagordi/support-serializable-closure": "^1.0"
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^4.7",
@@ -39,12 +43,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Reagordi\\_____\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Reagordi\\_____\\Tests\\": "tests"
+            "Reagordi\\Component\\SerializableClosure\\": "src"
         }
     },
     "config": {
@@ -53,9 +52,5 @@
             "infection/extension-installer": true,
             "composer/package-versions-deprecated": true
         }
-    },
-    "scripts": {
-        "test": "phpunit --testdox --no-interaction",
-        "test-watch": "phpunit-watcher watch"
     }
 }
